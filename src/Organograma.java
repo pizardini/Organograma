@@ -11,13 +11,13 @@ public class Organograma {
 
         String line;
         String setorRaiz = reader.readLine();
-        String busca = null;
+        String search = null;
 
         while ((line = reader.readLine()) != null && !line.equals("FIM")) {
             String[] parts = line.split(" ");
 
             if (parts.length == 1) {
-                busca = line;
+                search = line;
                 continue;
             }
 
@@ -36,14 +36,17 @@ public class Organograma {
 
         reader.close();
 
-        Setor setorBuscado = org.get(busca);
+        Setor setorBuscado = org.get(search);
         if (setorBuscado != null) {
             result.add(setorBuscado.getName());
             visitarSetores(setorBuscado, result);
         }
+        else {
+            System.out.println("Sem busca definida ou setor não encontrado.");
+        }
 
-        for (String nome : result) {
-            System.out.println(nome);
+        for (String name : result) {
+            System.out.println(name);
         }
     }
 
