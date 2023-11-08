@@ -10,7 +10,7 @@ public class Organograma {
         BufferedReader reader = new BufferedReader(new FileReader("organograma.txt"));
 
         String line;
-        String setorRaiz = reader.readLine();
+        String setorRaiz = reader.readLine(); //Primeira linha com o setor de mais alta hierarquia
         String search = null;
 
         while ((line = reader.readLine()) != null && !line.equals("FIM")) {
