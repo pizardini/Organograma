@@ -31,9 +31,21 @@ public class Organograma {
         reader.close();
 
         result.add(setorRaiz);
+        visitarSetores(org.get(setorRaiz), result);
 
         for (String name : result) {
             System.out.println(name);
+        }
+    }
+
+
+    public static void visitarSetores(Setor setor, List<String> resultado) {
+        List<Setor> subordinados = setor.getSubordinates();
+        Collections.sort(subordinados, Comparator.comparing(Setor::getName));
+
+        for (Setor subordinado : subordinados) {
+            resultado.add(subordinado.getName());
+            visitarSetores(subordinado, resultado);
         }
     }
 }
